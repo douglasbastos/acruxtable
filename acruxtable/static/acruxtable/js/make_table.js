@@ -53,26 +53,32 @@ function MakeTable(config) {
 
         formatDate: function(date){
             d = new Date(date);
+            if (this.isToday(date)){
+                hour = d.getHours();
+                minutes = d.getMinutes();
+                dateString = hour+':'+minutes;
+            }
+            else{
+                day = d.getDate();
+                month = d.getMonth()+1;
+                year = d.getFullYear();
 
-            // Chama método isToday
-            // return o resultado do método que será criado is_today
-            day = d.getDate();
-            month = d.getMonth()+1;
-            year = d.getFullYear();
+                if (day.toString().length === 1)
+                    day = '0'+day;
+                if (month.toString().length === 1)
+                    month = '0'+month;
 
-            console.log(day.toString().length);
-            if (day.toString().length === 1)
-                day = '0'+day;
-            if (month.toString().length === 1)
-                month = '0'+month;
-
-            return day +'/'+ month +'/'+ year;
-
-        }
+                dateString = day +'/'+ month +'/'+ year;
+            }
+            return dateString;
+        },
 
         isToday: function(date){
-            return false;
+            today = new Date();
+            d = new Date(date);
+            return (today.toDateString() == d.toDateString());
         }
+
     };
 
 }(jQuery));
