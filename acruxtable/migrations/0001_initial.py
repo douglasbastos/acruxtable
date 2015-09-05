@@ -14,9 +14,9 @@ class Migration(migrations.Migration):
             name='Email',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('name', models.CharField(max_length=55)),
-                ('subject', models.TextField(verbose_name=b'Corpo da mensagem')),
-                ('send_date', models.DateTimeField(auto_now_add=True)),
+                ('name', models.CharField(max_length=55, verbose_name=b'Nome')),
+                ('subject', models.CharField(max_length=55, verbose_name=b'Assunto')),
+                ('send_date', models.DateTimeField()),
             ],
             options={
                 'verbose_name': 'Email',

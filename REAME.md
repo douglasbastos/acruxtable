@@ -3,7 +3,7 @@
 #### Inclua app no INSTALLED_APPS
 
     INSTALLED_APPS = (
-        'acruxtable'
+        'acruxtable',
     )
 
 
@@ -14,3 +14,8 @@
         url(r'^', include('acruxtable.urls')),
         ...
     ]
+
+#### Rode as migrations
+
+    python manage.py migrate
+
