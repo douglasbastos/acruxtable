@@ -5,7 +5,19 @@
 <head>
     <title>Lista de Emails Cadastrados</title>
     <script type="text/javascript" src="{% static 'acruxtable/js/jquery-1.11.3.min.js' %}"></script>
-    <link rel="stylesheet" type="text/css" href="{% static 'admin/css/changelists.css' %}">
+    <style type="text/css">
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            text-align: left;
+        }
+        th, td {
+            padding: 5px;
+        }
+        th{
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
         <table>
