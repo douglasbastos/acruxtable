@@ -13,14 +13,7 @@ function MakeTable(config) {
             this.paginate = config.paginate;
             this.ordering = config.selects;
 
-            this.initConfig();
-
-        },
-
-        initConfig: function() {
-            'use strict';
             this.getJson()
-
         },
 
         getJson: function(){
