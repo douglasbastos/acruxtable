@@ -13,4 +13,4 @@ class Email(models.Model):
         verbose_name_plural = u'Emails'
 
     def __unicode__(self):
-        return self.name
+        return self.subject
