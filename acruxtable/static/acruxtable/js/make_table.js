@@ -11,7 +11,7 @@ function MakeTable(config) {
             'use strict';
 
             this.paginate = config.paginate;
-            this.ordering = config.selects;
+            this.ordering = config.ordering;
 
             this.getJson()
         },
@@ -31,6 +31,7 @@ function MakeTable(config) {
 
         createTable: function(items){
             table = '';
+            items = this.orderDate(items);
             var self = this;
             $.each(items, function(i, item) {
                 table += [
@@ -42,6 +43,10 @@ function MakeTable(config) {
                 ].join('');
             });
             $('#conteudo').html(table)
+        },
+
+        orderDate: function(items){
+            return _.sortBy(items, this.ordering);
         },
 
         formatDate: function(date){
