@@ -5,9 +5,20 @@
 <head>
     <title>Lista de Emails Cadastrados</title>
     <script type="text/javascript" src="{% static 'acruxtable/js/jquery-1.11.3.min.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'admin/css/changelists.css' %}">
 </head>
 <body>
-    <div id="conteudo"></div>
+        <table>
+            <thead>
+                <tr>
+                <th>Nome</th>
+                <th>Assunto</th>
+                <th>Data</th>
+                </tr>
+            </thead>
+        <tbody class="items_json">
+        </tbody>
+        </table>
     <script type="text/javascript" src="{% static 'acruxtable/js/underscore-min.js' %}"></script>
     <script type="text/javascript" src="{% static 'acruxtable/js/make_table.js' %}"></script>
     <script type="text/javascript">
@@ -15,6 +26,7 @@
             new MakeTable({
                 'paginate': 10,
                 'ordering': 'date',
+                'selectClass': ".items_json",
             });
         });
     </script>

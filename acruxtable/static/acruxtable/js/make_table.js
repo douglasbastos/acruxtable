@@ -12,6 +12,7 @@ function MakeTable(config) {
 
             this.paginate = config.paginate;
             this.ordering = config.ordering;
+            this.selectClass = config.selectClass;
 
             this.getJson()
         },
@@ -37,12 +38,12 @@ function MakeTable(config) {
                 table += [
                 '<tr>',
                     '<td>' + item.name + '</td>',
-                    '<td>' + self.formatDate(item.date) + '</td>',
                     '<td>' + item.subject + '</td>',
+                    '<td>' + self.formatDate(item.date) + '</td>',
                 '</tr>',
                 ].join('');
             });
-            $('#conteudo').html(table)
+            $(this.selectClass).html(table)
         },
 
         orderDate: function(items){
