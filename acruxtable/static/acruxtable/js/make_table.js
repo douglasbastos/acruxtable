@@ -56,6 +56,7 @@ function MakeTable(config) {
         getItems: function(items){
             this.items = items;
             this.orderItems(this.sortBy, this.sortOrder);
+            this.createPagination();
         },
 
         orderItems: function(sortBy, sortOrder){
@@ -87,7 +88,6 @@ function MakeTable(config) {
 
             $(this.selectClass+" *").remove();
             $(this.selectClass).html(table);
-            this.createPagination();
         },
 
         formatDate: function(date){
