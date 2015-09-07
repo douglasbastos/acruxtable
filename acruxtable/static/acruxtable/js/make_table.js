@@ -15,7 +15,7 @@ function MakeTable(config) {
             this.selectClass = config.selectClass;
 
             this.getJson();
-            this.clickOrder();
+            this.clickOrder(); //Mudar nome desse método para changeOrdination
         },
 
         getJson: function(){
@@ -26,7 +26,7 @@ function MakeTable(config) {
                 url: 'emails.json',
                 dataType: 'json',
                 success: function (data) {
-                    self.orderItems(data)
+                    self.orderItems(data, this.ordering)
                 }
             });
         },
@@ -45,13 +45,15 @@ function MakeTable(config) {
                 $("."+statusArrow).remove();
                 $("."+classClick).append('<div class="'+ changeStatusArrow +'"></div>');
 
-                // $(self.selectClass).hide();
-                // self.orderItems(self.items, classClick, changeStatusArrow);
+                $(self.selectClass).hide();
+                self.orderItems(self.items, classClick, changeStatusArrow);
             });
         },
 
-        orderItems: function(items){
-            this.items = _.sortBy(items, this.ordering);
+        orderItems: function(items, this.ordering, order_by){
+            order_by = typeof order_by !== 'undefined' ? order_by : 'asc';
+
+            this.items = _.sortBy(items);
             this.createTable(this.items);
         },
 
