@@ -7,16 +7,22 @@
     <script type="text/javascript" src="{% static 'acruxtable/js/jquery-1.11.3.min.js' %}"></script>
     <link rel="stylesheet" type="text/css" href="{% static 'acruxtable/css/simplePagination.css' %}">
     <style type="text/css">
+        .conteudo{
+            width: 800px;
+        }
         table, th, td {
             border: 1px solid black;
             border-collapse: collapse;
             text-align: left;
             width: 800px;
         }
+        thead {
+            background-color: #ccffc1;
+        }
         th, td {
             padding: 5px;
         }
-        th{
+        th {
             cursor: pointer;
         }
         .desc {
@@ -35,22 +41,36 @@
             width: 0;
             float: right;
         }
+        #totalItems {
+            width: 300px;
+            float: left;
+        }
+        #pagination {
+            float: right;
+        }
+        .footer-table{
+            margin-top: 5px;
+        }
     </style>
 </head>
 <body>
-    <table>
-        <thead>
-            <tr>
-            <th class="name">Nome</th>
-            <th class="subject">Assunto</th>
-            <th class="date">Data</th>
-            </tr>
-        </thead>
-    <tbody class="items_json">
-    </tbody>
-    </table>
-    <div id="totalItems"></div>
-    <div id="pagination"></div>
+    <div class="conteudo">
+        <table>
+            <thead>
+                <tr>
+                <th class="name">Nome</th>
+                <th class="subject">Assunto</th>
+                <th class="date">Data</th>
+                </tr>
+            </thead>
+        <tbody class="items_json">
+        </tbody>
+        </table>
+        <div class="footer-table">
+            <div id="totalItems"></div>
+            <div id="pagination"></div>
+        </div>
+    </div>
     <script type="text/javascript" src="{% static 'acruxtable/js/underscore-min.js' %}"></script>
     <script type="text/javascript" src="{% static 'acruxtable/js/jquery.simplePagination.js' %}"></script>
     <script type="text/javascript" src="{% static 'acruxtable/js/make_table.js' %}"></script>
