@@ -26,14 +26,15 @@ function MakeTable(config) {
                 url: 'emails.json',
                 dataType: 'json',
                 success: function (data) {
-                    self.createTable(data)
+                    self.orderItems(data)
                 }
             });
         },
 
         clickOrder: function(){
+            var self = this;
             $('th').click(function(){
-                classClick = '.'+this.className;
+                classClick = this.className;
                 statusArrow = $('th div').attr('class');
 
                 if (statusArrow === 'down')
@@ -42,13 +43,21 @@ function MakeTable(config) {
                     changeStatusArrow = 'down';
 
                 $("."+statusArrow).remove();
-                $(classClick).append('<div class="'+ changeStatusArrow +'"></div>');
+                $("."+classClick).append('<div class="'+ changeStatusArrow +'"></div>');
+
+                // $(self.selectClass).hide();
+                // self.orderItems(self.items, classClick, changeStatusArrow);
             });
+        },
+
+        orderItems: function(items){
+            this.items = _.sortBy(items, this.ordering);
+            this.createTable(this.items);
         },
 
         createTable: function(items){
             table = '';
-            items = this.orderItems(items);
+
             var self = this;
             $.each(items, function(i, item) {
                 table += [
@@ -60,10 +69,6 @@ function MakeTable(config) {
                 ].join('');
             });
             $(this.selectClass).html(table)
-        },
-
-        orderItems: function(items){
-            return _.sortBy(items, this.ordering);
         },
 
         formatDate: function(date){
