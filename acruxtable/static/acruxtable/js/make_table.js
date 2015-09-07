@@ -69,6 +69,9 @@ function MakeTable(config) {
             table = '';
             var self = this;
             $.each(items, function(i, item) {
+                init = self.paginate * (self.page-1);
+                end = (self.paginate * self.page) - 1;
+                if (!(init <= i && i <= end)){ return; }
                 table += [
                 '<tr>',
                     '<td>' + item.name + '</td>',
