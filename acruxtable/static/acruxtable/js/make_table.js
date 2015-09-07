@@ -10,10 +10,10 @@ function MakeTable(config) {
         init: function(config) {
             'use strict';
 
-            this.paginate = config.paginate;
             this.sortBy = config.sortBy;
             this.selectClass = config.selectClass;
-
+            this.paginate = config.paginate || 10;
+            this.sortOrder = config.sortOrder || 'asc';
             this.getJson();
             this.MakeOrdination();
         },
@@ -26,12 +26,14 @@ function MakeTable(config) {
                 url: 'emails.json',
                 dataType: 'json',
                 success: function (data) {
-                    self.orderItems(data, self.sortBy)
+                    self.orderItems(data, self.sortBy, self.sortOrder);
                 }
             });
         },
 
         MakeOrdination: function(){
+            $("."+this.sortBy).append('<div class="'+ this.sortOrder +'"></div>');
+
             var self = this;
             $('th').click(function(){
                 classClick = this.className;
@@ -51,10 +53,13 @@ function MakeTable(config) {
         },
 
         orderItems: function(items, sortBy, sortOrder){
-            if (sortOrder !== 'desc')
+
+            if (sortOrder === 'asc')
                 this.items = _.sortBy(items, sortBy);
-            else
+            else if (sortOrder === 'desc')
                 this.items = _.sortBy(items, sortBy).reverse();
+            else
+                throw("sortOrder aceita somente [asc|desc]");
 
             this.createTable(this.items);
         },

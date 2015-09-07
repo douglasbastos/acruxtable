@@ -42,7 +42,7 @@
             <tr>
             <th class="name">Nome</th>
             <th class="subject">Assunto</th>
-            <th class="date">Data<div class="asc"></div></th> <!-- TODO: Adicionar div.asc no jquery-->
+            <th class="date">Data</th>
             </tr>
         </thead>
     <tbody class="items_json">
@@ -53,9 +53,12 @@
     <script type="text/javascript">
         $(document).ready(function() {
             new MakeTable({
-                'paginate': 10,
                 'sortBy': 'date',
                 'selectClass': ".items_json",
+                // Valores padrões, definidos no próprio js, altere caso tenha necessidade
+                // 'paginate': 10,
+                // Valores aceitos asc e desc
+                // 'sortOrder': 'asc',
             });
         });
     </script>
