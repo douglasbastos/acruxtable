@@ -48,7 +48,7 @@ function MakeTable(config) {
 
         createTable: function(items){
             table = '';
-            items = this.orderDate(items);
+            items = this.orderItems(items);
             var self = this;
             $.each(items, function(i, item) {
                 table += [
@@ -62,7 +62,7 @@ function MakeTable(config) {
             $(this.selectClass).html(table)
         },
 
-        orderDate: function(items){
+        orderItems: function(items){
             return _.sortBy(items, this.ordering);
         },
 
