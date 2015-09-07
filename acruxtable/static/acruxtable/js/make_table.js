@@ -57,6 +57,7 @@ function MakeTable(config) {
             this.items = items;
             this.orderItems(this.sortBy, this.sortOrder);
             this.createPagination();
+            this.createInfoTotalItems();
         },
 
         orderItems: function(sortBy, sortOrder){
@@ -72,11 +73,15 @@ function MakeTable(config) {
 
         createTable: function(){
             table = '';
+            this.start = this.paginate * (this.page-1);
+            this.end = (this.paginate * this.page) - 1;
+
+            if (this.end > this.items.length)
+                this.end = (this.items.length-1);
+
             var self = this;
             $.each(this.items, function(i, item) {
-                init = self.paginate * (self.page-1);
-                end = (self.paginate * self.page) - 1;
-                if (!(init <= i && i <= end)){ return; }
+                if (!(self.start <= i && i <= self.end)){ return; }
                 table += [
                 '<tr>',
                     '<td>' + item.name + '</td>',
@@ -135,12 +140,18 @@ function MakeTable(config) {
             $("#pagination").click(function(){
                 self.currentPage($("#pagination").pagination('getCurrentPage'));
                 self.createTable();
+                self.createInfoTotalItems();
             });
         },
 
         currentPage: function(page){
             this.page = page;
         },
+
+        createInfoTotalItems: function(){
+            text = "Exibindo de "+ (this.start+1) +" a "+ (this.end+1) +" em um total de "+ this.items.length +" itens.";
+            $("#totalItems").text(text);
+        }
 
     };
 
