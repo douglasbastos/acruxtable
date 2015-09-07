@@ -11,7 +11,7 @@ function MakeTable(config) {
             'use strict';
 
             this.paginate = config.paginate;
-            this.ordering = config.ordering;
+            this.sortBy = config.sortBy;
             this.selectClass = config.selectClass;
 
             this.getJson();
@@ -26,7 +26,7 @@ function MakeTable(config) {
                 url: 'emails.json',
                 dataType: 'json',
                 success: function (data) {
-                    self.orderItems(data, this.ordering)
+                    self.orderItems(data, self.sortBy)
                 }
             });
         },
@@ -53,13 +53,12 @@ function MakeTable(config) {
         orderItems: function(items, sortBy, sortOrder){
             // order_by = typeof order_by !== 'undefined' ? order_by : 'asc';
 
-            this.items = _.sortBy(items);
+            this.items = _.sortBy(items, sortBy);
             this.createTable(this.items);
         },
 
         createTable: function(items){
             table = '';
-
             var self = this;
             $.each(items, function(i, item) {
                 table += [
