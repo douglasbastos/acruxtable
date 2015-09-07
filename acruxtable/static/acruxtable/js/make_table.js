@@ -49,7 +49,6 @@ function MakeTable(config) {
                 $("."+statusArrow).remove();
                 $("."+classClick).append('<div class="'+ changeStatusArrow +'"></div>');
 
-                $(self.selectClass+" *").remove();
                 self.orderItems(self.items, classClick, changeStatusArrow);
             });
         },
@@ -80,6 +79,8 @@ function MakeTable(config) {
                 '</tr>',
                 ].join('');
             });
+
+            $(this.selectClass+" *").remove();
             $(this.selectClass).html(table)
             this.createPagination();
         },
