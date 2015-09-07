@@ -17,7 +17,7 @@ function MakeTable(config) {
             this.page = config.page || 1;
 
             this.getJson();
-            this.MakeOrdination();
+            this.makeOrdination();
         },
 
         getJson: function(){
@@ -28,12 +28,12 @@ function MakeTable(config) {
                 url: 'emails.json',
                 dataType: 'json',
                 success: function (data) {
-                    self.orderItems(data, self.sortBy, self.sortOrder);
+                    self.getItems(data);
                 }
             });
         },
 
-        MakeOrdination: function(){
+        makeOrdination: function(){
             $("."+this.sortBy).append('<div class="'+ this.sortOrder +'"></div>');
 
             var self = this;
@@ -49,25 +49,30 @@ function MakeTable(config) {
                 $("."+statusArrow).remove();
                 $("."+classClick).append('<div class="'+ changeStatusArrow +'"></div>');
 
-                self.orderItems(self.items, classClick, changeStatusArrow);
+                self.orderItems(classClick, changeStatusArrow);
             });
         },
 
-        orderItems: function(items, sortBy, sortOrder){
+        getItems: function(items){
+            this.items = items;
+            this.orderItems(this.sortBy, this.sortOrder);
+        },
+
+        orderItems: function(sortBy, sortOrder){
             if (sortOrder === 'asc')
-                this.items = _.sortBy(items, sortBy);
+                this.items = _.sortBy(this.items, sortBy);
             else if (sortOrder === 'desc')
-                this.items = _.sortBy(items, sortBy).reverse();
+                this.items = _.sortBy(this.items, sortBy).reverse();
             else
                 throw("sortOrder aceita somente [asc|desc]");
 
-            this.createTable(this.items);
+            this.createTable();
         },
 
-        createTable: function(items){
+        createTable: function(){
             table = '';
             var self = this;
-            $.each(items, function(i, item) {
+            $.each(this.items, function(i, item) {
                 init = self.paginate * (self.page-1);
                 end = (self.paginate * self.page) - 1;
                 if (!(init <= i && i <= end)){ return; }
@@ -81,7 +86,7 @@ function MakeTable(config) {
             });
 
             $(this.selectClass+" *").remove();
-            $(this.selectClass).html(table)
+            $(this.selectClass).html(table);
             this.createPagination();
         },
 
@@ -129,11 +134,12 @@ function MakeTable(config) {
             var self = this;
             $("#pagination").click(function(){
                 self.currentPage($("#pagination").pagination('getCurrentPage'));
+                self.createTable();
             });
         },
 
         currentPage: function(page){
-            console.log(page);
+            this.page = page;
         },
 
     };
