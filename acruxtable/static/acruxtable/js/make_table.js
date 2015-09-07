@@ -14,7 +14,8 @@ function MakeTable(config) {
             this.ordering = config.ordering;
             this.selectClass = config.selectClass;
 
-            this.getJson()
+            this.getJson();
+            this.clickOrder();
         },
 
         getJson: function(){
@@ -27,6 +28,21 @@ function MakeTable(config) {
                 success: function (data) {
                     self.createTable(data)
                 }
+            });
+        },
+
+        clickOrder: function(){
+            $('th').click(function(){
+                classClick = '.'+this.className;
+                statusArrow = $('th div').attr('class');
+
+                if (statusArrow === 'down')
+                    changeStatusArrow = 'up';
+                else
+                    changeStatusArrow = 'down';
+
+                $("."+statusArrow).remove();
+                $(classClick).append('<div class="'+ changeStatusArrow +'"></div>');
             });
         },
 
