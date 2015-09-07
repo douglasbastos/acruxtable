@@ -14,6 +14,8 @@ function MakeTable(config) {
             this.selectClass = config.selectClass;
             this.paginate = config.paginate || 10;
             this.sortOrder = config.sortOrder || 'asc';
+            this.page = config.page || 1;
+
             this.getJson();
             this.MakeOrdination();
         },
@@ -53,7 +55,6 @@ function MakeTable(config) {
         },
 
         orderItems: function(items, sortBy, sortOrder){
-
             if (sortOrder === 'asc')
                 this.items = _.sortBy(items, sortBy);
             else if (sortOrder === 'desc')
@@ -77,6 +78,7 @@ function MakeTable(config) {
                 ].join('');
             });
             $(this.selectClass).html(table)
+            this.createPagination();
         },
 
         formatDate: function(date){
@@ -105,7 +107,30 @@ function MakeTable(config) {
             today = new Date();
             d = new Date(date);
             return (today.toDateString() == d.toDateString());
-        }
+        },
+
+        createPagination: function(){
+            var self = this;
+            $(document).ready(function() {
+                $("#pagination").pagination({
+                    items: self.items.length,
+                    itemsOnPage: self.paginate,
+                    cssStyle: 'light-theme'
+                });
+            });
+            this.page = this.getCurrentPage() || this.page;
+        },
+
+        getCurrentPage: function(){
+            var self = this;
+            $("#pagination").click(function(){
+                self.currentPage($("#pagination").pagination('getCurrentPage'));
+            });
+        },
+
+        currentPage: function(page){
+            console.log(page);
+        },
 
     };
 
