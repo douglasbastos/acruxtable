@@ -37,10 +37,10 @@ function MakeTable(config) {
                 classClick = this.className;
                 statusArrow = $('th div').attr('class');
 
-                if (statusArrow === 'down')
-                    changeStatusArrow = 'up';
+                if (statusArrow === 'asc')
+                    changeStatusArrow = 'desc';
                 else
-                    changeStatusArrow = 'down';
+                    changeStatusArrow = 'asc';
 
                 $("."+statusArrow).remove();
                 $("."+classClick).append('<div class="'+ changeStatusArrow +'"></div>');
@@ -50,8 +50,8 @@ function MakeTable(config) {
             });
         },
 
-        orderItems: function(items, this.ordering, order_by){
-            order_by = typeof order_by !== 'undefined' ? order_by : 'asc';
+        orderItems: function(items, sortBy, sortOrder){
+            // order_by = typeof order_by !== 'undefined' ? order_by : 'asc';
 
             this.items = _.sortBy(items);
             this.createTable(this.items);
