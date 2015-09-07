@@ -5,6 +5,7 @@
 <head>
     <title>Lista de Emails Cadastrados</title>
     <script type="text/javascript" src="{% static 'acruxtable/js/jquery-1.11.3.min.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'acruxtable/css/simplePagination.css' %}">
     <style type="text/css">
         table, th, td {
             border: 1px solid black;
@@ -48,7 +49,10 @@
     <tbody class="items_json">
     </tbody>
     </table>
+    <div id="totalItems"></div>
+    <div id="pagination"></div>
     <script type="text/javascript" src="{% static 'acruxtable/js/underscore-min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'acruxtable/js/jquery.simplePagination.js' %}"></script>
     <script type="text/javascript" src="{% static 'acruxtable/js/make_table.js' %}"></script>
     <script type="text/javascript">
         $(document).ready(function() {
