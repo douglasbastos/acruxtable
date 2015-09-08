@@ -18,6 +18,7 @@ function MakeTable(config) {
 
             this.getJson();
             this.makeOrdination();
+            this.getTodayItems();
         },
 
         getJson: function(){
@@ -93,6 +94,24 @@ function MakeTable(config) {
 
             $(this.selectClass+" *").remove();
             $(this.selectClass).html(table);
+        },
+
+        getTodayItems: function(){
+            var self = this;
+            $(".filter").click(function(){
+                allItems = [];
+                $.each(self.items, function(i, item){
+                    if (self.isToday(item.date))
+                        allItems.push(item);
+                });
+                self.showTodayItems(allItems);
+            });
+        },
+
+        showTodayItems: function(itemsToday){
+            this.itemsAux = this.items;
+            this.items = itemsToday;
+            this.createTable();
         },
 
         formatDate: function(date){
