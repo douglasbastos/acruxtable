@@ -2,7 +2,7 @@
 
     Django >= 1.7
 
-`Obs: Versão abaixo da citado acima, pode existe dependência do South para rodar as migrations. (Não testada)`
+`Obs: Versões abaixo da citado acima, pode existe dependência do South para rodar as migrations. (Não testada)`
 
 
 # Instalação
@@ -39,11 +39,10 @@
     pip install -e .
 
 ##### Execute os passos 2, 3 e 4 descritos acima
-.
 
 # Conhecendo o projeto
 
-No ambiente de desenvolvimento, acesse o link abaixo e cadastre informações para alimentar json
+No ambiente de desenvolvimento local, acesse o link abaixo e cadastre informações para alimentar json
 
 [Cadastre emails](http://localhost:8000/admin/acruxtable/email/)
 
@@ -51,7 +50,7 @@ Existe um dump com o nome db.sql, para não ter a necessidade de cadastrar diver
 
 [Dump](https://github.com/douglasbastos/acruxtable/blob/master/db.sql)
 
-Depois do servidor inicializado pode ter acesso ao json no ambiente de desenvolvimento acessando o link abaixo.
+Depois do servidor inicializado, já se tem acesso ao json acessando o link abaixo. Somente no ambiente de desenvolvimento local.
 
 [Json com emails](http://localhost:8000/emails.json)
 
@@ -73,7 +72,7 @@ Para customização da listagem de emails é necessário instânciar e configura
 * Obrigatório
 
 Definimos por qual elemento do json queremos ordenar.
-No nosso caso pode ser `[date|name|subject]`
+No nosso caso pode ser `[date|name|subject]`.
 
 ## selectClass
 * Obrigatório
@@ -96,7 +95,7 @@ Adicionamos essa classe onde a tabela será carregada.
 ## paginate
 * Opcional
 
-Definimos quantos elementos queremos por página. Valor default é 10
+Definimos quantos elementos queremos por página. Valor default é 10.
 
 ## sortOrder
 * Opcional
@@ -107,6 +106,6 @@ Definimos qual ordenção será feito no primeiro momento. Aceita apenas `[asc|d
 
 Se tudo foi instalado e configurado corretamente. Acessando o link abaixo no ambiente de desenvolvimento será possível visualizar e ordenar os itens como quiser.
 
-[Página final](http://localhost:8000/tabela-emails.html)
+[Resultado](http://localhost:8000/tabela-emails.html)
 --------------------
 
