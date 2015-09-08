@@ -18,7 +18,7 @@ function MakeTable(config) {
 
             this.getJson();
             this.makeOrdination();
-            this.getTodayItems();
+            this.clickChange();
         },
 
         getJson: function(){
@@ -96,8 +96,9 @@ function MakeTable(config) {
             self.createInfoTotalItems();
         },
 
-        getTodayItems: function(){
+        clickChange: function(){
             var self = this;
+
             $(".filter").click(function(){
                 allItems = [];
                 $.each(self.items, function(i, item){
@@ -106,6 +107,9 @@ function MakeTable(config) {
                 });
                 self.showTodayItems(allItems);
             });
+            $(".removeFilter").click(function(){
+                self.removeFilter();
+            });
         },
 
         showTodayItems: function(itemsToday){
@@ -113,6 +117,20 @@ function MakeTable(config) {
             this.items = itemsToday;
             this.createTable();
             this.createPagination();
+            this.page = 1;
+            $(".filter").addClass("removeFilter")
+                        .removeClass("filter")
+                        .text("Voltar valores iniciais");
+        },
+
+        removeFilter: function(){
+            this.items = this.itemsAux;
+            this.createTable();
+            this.createPagination();
+            this.page = 1;
+            $(".removeFilter").addClass("filter")
+                        .removeClass("removeFilter")
+                        .text("Pesquisar emails de hoje.");
         },
 
         formatDate: function(date){
