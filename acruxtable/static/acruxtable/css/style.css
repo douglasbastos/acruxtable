@@ -1,0 +1,44 @@
+.conteudo{
+    width: 800px;
+}
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    text-align: left;
+    width: 800px;
+}
+thead {
+    background-color: #ccffc1;
+}
+th, td {
+    padding: 5px;
+}
+th {
+    cursor: pointer;
+}
+.desc {
+    border-bottom: 15px solid black;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    height: 0;
+    width: 0;
+    float: right;
+}
+.asc {
+    border-top: 15px solid black;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    height: 0;
+    width: 0;
+    float: right;
+}
+#totalItems {
+    width: 300px;
+    float: left;
+}
+#pagination {
+    float: right;
+}
+.footer-table{
+    margin-top: 5px;
+}
