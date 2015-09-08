@@ -10,14 +10,20 @@
 </head>
 <body>
     <div class="conteudo">
-        <div class="filter">Pesquisar emails de hoje.</div>
-        <div class="removeFilter" style="display: none">Voltar status inicial.</div>
+        <div class="filterBotton">
+            <div class="filter">Pesquisar emails de hoje.</div>
+            <div class="removeFilter" style="display: none">Voltar status inicial.</div>
+        </div>
+        <div class="search">
+            <input id="searchItems" type="text" value="Nome"></input>
+        </div>
+        <p></p>
         <table>
             <thead>
                 <tr>
-                <th class="name">Nome</th>
-                <th class="subject">Assunto</th>
-                <th class="date">Data</th>
+                    <th class="name">Nome</th>
+                    <th class="subject">Assunto</th>
+                    <th class="date">Data</th>
                 </tr>
             </thead>
         <tbody class="items_json">

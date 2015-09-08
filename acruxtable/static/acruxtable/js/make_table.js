@@ -18,7 +18,6 @@ function MakeTable(config) {
 
             this.getJson();
             this.makeOrdination();
-            this.clickChange();
         },
 
         getJson: function(){
@@ -58,6 +57,7 @@ function MakeTable(config) {
             this.items = items;
             this.orderItems(this.sortBy, this.sortOrder);
             this.createPagination();
+            this.eventsJquery();
         },
 
         orderItems: function(sortBy, sortOrder){
@@ -96,7 +96,7 @@ function MakeTable(config) {
             self.createInfoTotalItems();
         },
 
-        clickChange: function(){
+        eventsJquery: function(){
             var self = this;
 
             $(".filter").click(function(){
@@ -110,6 +110,34 @@ function MakeTable(config) {
             $(".removeFilter").click(function(){
                 self.removeFilter();
             });
+            $("input#searchItems").keyup(function() {
+                var value = $(this).val();
+                    self.getItemsResearched(value);
+                    $("p").text("Filtrando por: "+ value);
+                }).keyup();
+        },
+
+        getItemsResearched: function(search){
+            // 'use strict';
+            var self = this;
+            allItems = []
+            $.each(this.items, function(i, item){
+                existName = self.items[i].name.trim().toLowerCase().match(search.toLowerCase())
+                existSubject = self.items[i].subject.trim().toLowerCase().match(search.toLowerCase())
+                if (existName || existSubject)
+                    allItems.push(item)
+            });
+            self.showItemsResearched(allItems);
+        },
+
+        showItemsResearched: function(itemsToday){
+            this.itemsAux = this.items;
+            this.items = itemsToday;
+            this.createTable();
+            this.createPagination();
+            this.page = 1;
+            $(".filter").hide();
+            $(".removeFilter").show();
         },
 
         showTodayItems: function(itemsToday){
