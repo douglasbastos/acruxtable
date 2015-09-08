@@ -58,7 +58,6 @@ function MakeTable(config) {
             this.items = items;
             this.orderItems(this.sortBy, this.sortOrder);
             this.createPagination();
-            this.createInfoTotalItems();
         },
 
         orderItems: function(sortBy, sortOrder){
@@ -94,6 +93,7 @@ function MakeTable(config) {
 
             $(this.selectClass+" *").remove();
             $(this.selectClass).html(table);
+            self.createInfoTotalItems();
         },
 
         getTodayItems: function(){
@@ -112,6 +112,7 @@ function MakeTable(config) {
             this.itemsAux = this.items;
             this.items = itemsToday;
             this.createTable();
+            this.createPagination();
         },
 
         formatDate: function(date){
@@ -159,7 +160,6 @@ function MakeTable(config) {
             $("#pagination").click(function(){
                 self.currentPage($("#pagination").pagination('getCurrentPage'));
                 self.createTable();
-                self.createInfoTotalItems();
             });
         },
 
