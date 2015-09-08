@@ -53,7 +53,8 @@ function MakeTable(config) {
         },
 
         getItems: function(items){
-            this.items = items;
+            // Nunca altere this.itemsFixex TODO: Pesquisar como deixar array imutável.
+            this.itemsFixed = this.items = items;
             this.orderItems(this.sortBy, this.sortOrder);
             this.createPagination();
             this.eventsJquery();
@@ -117,12 +118,13 @@ function MakeTable(config) {
         },
 
         getItemsResearched: function(search){
-            var self = this;
+            var self = this
+
             var allItems = []
-            $.each(this.items, function(i, item){
-                var existName = self.items[i].name.trim().toLowerCase().match(search.toLowerCase());
+            $.each(this.itemsFixed, function(i, item){
+                var existName = self.itemsFixed[i].name.trim().toLowerCase().match(search.toLowerCase());
                 // console.log(existName)
-                var existSubject = self.items[i].subject.trim().toLowerCase().match(search.toLowerCase());
+                var existSubject = self.itemsFixed[i].subject.trim().toLowerCase().match(search.toLowerCase());
                 // console.log(existSubject)
                 // console.log("================");
                 if (existName || existSubject)
