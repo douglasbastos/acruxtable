@@ -118,9 +118,8 @@ function MakeTable(config) {
             this.createTable();
             this.createPagination();
             this.page = 1;
-            $(".filter").addClass("removeFilter")
-                        .removeClass("filter")
-                        .text("Voltar valores iniciais");
+            $(".filter").hide();
+            $(".removeFilter").show();
         },
 
         removeFilter: function(){
@@ -128,9 +127,8 @@ function MakeTable(config) {
             this.createTable();
             this.createPagination();
             this.page = 1;
-            $(".removeFilter").addClass("filter")
-                        .removeClass("removeFilter")
-                        .text("Pesquisar emails de hoje.");
+            $(".removeFilter").hide();
+            $(".filter").show();
         },
 
         formatDate: function(date){
