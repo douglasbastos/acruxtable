@@ -4,11 +4,11 @@ function MakeTable(config) {
 }
 
 ;(function($){
+    'use strict';
 
     MakeTable.prototype = {
 
         init: function(config) {
-            'use strict';
 
             this.sortBy = config.sortBy;
             this.selectClass = config.selectClass;
@@ -21,7 +21,6 @@ function MakeTable(config) {
         },
 
         getJson: function(){
-            'use strict';
             var self = this;
             $.ajax({
                 type: 'GET',
@@ -72,7 +71,7 @@ function MakeTable(config) {
         },
 
         createTable: function(){
-            table = '';
+            var table = '';
             this.start = this.paginate * (this.page-1);
             this.end = (this.paginate * this.page) - 1;
 
@@ -100,7 +99,7 @@ function MakeTable(config) {
             var self = this;
 
             $(".filter").click(function(){
-                allItems = [];
+                var allItems = [];
                 $.each(self.items, function(i, item){
                     if (self.isToday(item.date))
                         allItems.push(item);
@@ -118,12 +117,11 @@ function MakeTable(config) {
         },
 
         getItemsResearched: function(search){
-            // 'use strict';
             var self = this;
-            allItems = []
+            var allItems = []
             $.each(this.items, function(i, item){
-                existName = self.items[i].name.trim().toLowerCase().match(search.toLowerCase())
-                existSubject = self.items[i].subject.trim().toLowerCase().match(search.toLowerCase())
+                var existName = self.items[i].name.trim().toLowerCase().match(search.toLowerCase())
+                var existSubject = self.items[i].subject.trim().toLowerCase().match(search.toLowerCase())
                 if (existName || existSubject)
                     allItems.push(item)
             });
@@ -160,16 +158,16 @@ function MakeTable(config) {
         },
 
         formatDate: function(date){
-            d = new Date(date);
+            var d = new Date(date);
             if (this.isToday(date)){
-                hour = d.getHours();
-                minutes = d.getMinutes();
-                dateString = hour+':'+minutes;
+                var hour = d.getHours();
+                var minutes = d.getMinutes();
+                var dateString = hour+':'+minutes;
             }
             else{
-                day = d.getDate();
-                month = d.getMonth()+1;
-                year = d.getFullYear();
+                var day = d.getDate();
+                var month = d.getMonth()+1;
+                var year = d.getFullYear();
 
                 if (day.toString().length === 1)
                     day = '0'+day;
@@ -182,8 +180,8 @@ function MakeTable(config) {
         },
 
         isToday: function(date){
-            today = new Date();
-            d = new Date(date);
+            var today = new Date();
+            var d = new Date(date);
             return (today.toDateString() == d.toDateString());
         },
 
@@ -212,7 +210,7 @@ function MakeTable(config) {
         },
 
         createInfoTotalItems: function(){
-            text = "Exibindo de "+ (this.start+1) +" a "+ (this.end+1) +" em um total de "+ this.items.length +" itens.";
+            var text = "Exibindo de "+ (this.start+1) +" a "+ (this.end+1) +" em um total de "+ this.items.length +" itens.";
             $("#totalItems").text(text);
         }
 
