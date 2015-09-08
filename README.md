@@ -109,3 +109,7 @@ Se tudo foi instalado e configurado corretamente. Acessando o link abaixo no amb
 [Resultado](http://localhost:8000/tabela-emails.html)
 --------------------
 
+# Bibliotecas usadas no desenvolvimento
+* [Jquery](https://jquery.com/)
+* [Underscore.js](http://underscorejs.org/)
+* [simplePagination](http://flaviusmatis.github.io/simplePagination.js/)
