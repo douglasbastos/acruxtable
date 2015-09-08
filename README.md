@@ -102,6 +102,11 @@ Definimos quantos elementos queremos por página. Valor default é 10.
 
 Definimos qual ordenção será feito no primeiro momento. Aceita apenas `[asc|desc]`  sendo `asc` seu valor default.
 
+## page
+* Opcional
+
+Definimos em qual página a tabela será inicializada. Seu valor default é 1.
+
 # Acessando página final
 
 Se tudo foi instalado e configurado corretamente. Acessando o link abaixo no ambiente de desenvolvimento será possível visualizar e ordenar os itens como quiser.
@@ -109,7 +114,8 @@ Se tudo foi instalado e configurado corretamente. Acessando o link abaixo no amb
 [Resultado](http://localhost:8000/tabela-emails.html)
 --------------------
 
-# Bibliotecas usadas no desenvolvimento
+
+#### Bibliotecas usadas no desenvolvimento
 * [Jquery](https://jquery.com/)
 * [Underscore.js](http://underscorejs.org/)
 * [simplePagination](http://flaviusmatis.github.io/simplePagination.js/)
