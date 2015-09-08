@@ -37,13 +37,13 @@ function MakeTable(config) {
 
             var self = this;
             $('th').click(function(){
-                classClick = this.className;
-                statusArrow = $('th div').attr('class');
+                var classClick = this.className;
+                var statusArrow = $('th div').attr('class');
 
                 if (statusArrow === 'asc')
-                    changeStatusArrow = 'desc';
+                    var changeStatusArrow = 'desc';
                 else
-                    changeStatusArrow = 'asc';
+                    var changeStatusArrow = 'asc';
 
                 $("."+statusArrow).remove();
                 $("."+classClick).append('<div class="'+ changeStatusArrow +'"></div>');
@@ -112,40 +112,42 @@ function MakeTable(config) {
             $("input#searchItems").keyup(function() {
                 var value = $(this).val();
                     self.getItemsResearched(value);
-                    $("p").text("Filtrando por: "+ value);
-                }).keyup();
+                    $("p").html("Filtrando por: "+ value +" - <span class='removeFilterResearched'>Remover Filtro</span>");
+                }).keydown();
         },
 
         getItemsResearched: function(search){
             var self = this;
             var allItems = []
             $.each(this.items, function(i, item){
-                var existName = self.items[i].name.trim().toLowerCase().match(search.toLowerCase())
-                var existSubject = self.items[i].subject.trim().toLowerCase().match(search.toLowerCase())
+                var existName = self.items[i].name.trim().toLowerCase().match(search.toLowerCase());
+                // console.log(existName)
+                var existSubject = self.items[i].subject.trim().toLowerCase().match(search.toLowerCase());
+                // console.log(existSubject)
+                // console.log("================");
                 if (existName || existSubject)
                     allItems.push(item)
             });
-            self.showItemsResearched(allItems);
+            // console.log(search.toLowerCase())
+            self.showResearchedItems(allItems);
         },
 
-        showItemsResearched: function(itemsToday){
-            this.itemsAux = this.items;
-            this.items = itemsToday;
-            this.createTable();
-            this.createPagination();
-            this.page = 1;
-            $(".filter").hide();
-            $(".removeFilter").show();
+        showResearchedItems: function(itemsResearched){
+            this.showItemsFiltered(itemsResearched);
         },
 
         showTodayItems: function(itemsToday){
+            this.showItemsFiltered(itemsToday);
+            $(".filter").hide();
+            $(".removeFilter").show();
+        },
+
+        showItemsFiltered: function(items){
             this.itemsAux = this.items;
-            this.items = itemsToday;
+            this.items = items;
             this.createTable();
             this.createPagination();
             this.page = 1;
-            $(".filter").hide();
-            $(".removeFilter").show();
         },
 
         removeFilter: function(){
