@@ -10,14 +10,17 @@
 </head>
 <body>
     <div class="conteudo">
-        <div class="filterBotton">
+        <div class="search">
+            <input id="searchItems" type="text" placeholder="Search"></input>
+            <p class="filterText" style="display: none">
+                <strong>Filtrando por: <span class="itemSearch"></span> - </strong>
+                <span class='removeFilterResearched'>Remover Filtro</span>
+            </p>
+        </div>
+        <div class="filterLabel">
             <div class="filter">Pesquisar emails de hoje.</div>
             <div class="removeFilter" style="display: none">Voltar status inicial.</div>
         </div>
-        <div class="search">
-            <input id="searchItems" type="text" value="Nome"></input>
-        </div>
-        <p></p>
         <table>
             <thead>
                 <tr>
