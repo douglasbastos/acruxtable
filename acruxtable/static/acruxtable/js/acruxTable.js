@@ -57,7 +57,7 @@ function MakeTable(config) {
             this.items = items;
             this.orderItems(this.sortBy, this.sortOrder);
             this.createPagination();
-            this.eventsJquery();
+            this.eventsJS();
         },
 
         orderItems: function(sortBy, sortOrder){
@@ -96,7 +96,7 @@ function MakeTable(config) {
             self.createInfoTotalItems();
         },
 
-        eventsJquery: function(){
+        eventsJS: function(){
             var self = this;
 
             $(".filter-today").click(function(){
