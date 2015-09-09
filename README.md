@@ -42,8 +42,10 @@
 
 # Conhecendo o projeto
 
-Os links abaixo estão com rota localhost:8000
-Em seu ambiente local, acesse o link abaixo e cadastre informações para alimentar json
+Rode o servidor na porta 8000
+
+
+Em seu ambiente local, acesse o link abaixo e cadastre informações para alimentar o json
 
 [Cadastre emails](http://localhost:8000/admin/acruxtable/email/)
 
@@ -51,10 +53,9 @@ Existe um dump com o nome db.sql, para não ter a necessidade de cadastrar diver
 
 [Dump](https://github.com/douglasbastos/acruxtable/blob/master/db.sql)
 
-Depois do servidor inicializado, já se tem acesso ao json acessando o link abaixo. Somente no ambiente de desenvolvimento local.
+Acessando o link abaixo no seu ambiente local, você encontrará o json que alimentará a tabela.
 
 [Json com emails](http://localhost:8000/emails.json)
-
 
 # Configurando acruxTable.js
 
@@ -101,16 +102,16 @@ Definimos quantos elementos queremos por página. Valor default é 10.
 ## sortOrder
 * Opcional
 
-Definimos qual ordenção será feito no primeiro momento. Aceita apenas `[asc|desc]`  sendo `asc` seu valor default.
+Definimos qual ordenação será feito no primeiro carregamento. Aceita apenas `[asc|desc]`  sendo `asc` seu valor default.
 
 ## page
 * Opcional
 
-Definimos em qual página a tabela será inicializada. Seu valor default é 1.
+Definimos em qual página de itens a tabela será iniciada. Seu valor default é 1.
 
 # Acessando página final
 
-Se tudo foi instalado e configurado corretamente. Acessando o link abaixo no ambiente de desenvolvimento será possível visualizar e ordenar os itens como quiser.
+Se tudo foi instalado e configurado corretamente. Acessando o link abaixo no seu ambiente local será possível visualizar, ordenar e pesquisar nos itens como quiser.
 
 [Resultado](http://localhost:8000/tabela-emails.html)
 --------------------
