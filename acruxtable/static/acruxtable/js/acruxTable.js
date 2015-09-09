@@ -107,15 +107,22 @@ function MakeTable(config) {
                 });
                 self.showTodayItems(allItems);
             });
+
             $(".remove-filter-today").click(function(){
                 self.removeFilter();
             });
+
             $("input#search-items-input").keyup(function() {
                 var value = $(this).val();
+                    $("p.info-filter").show();
+
                     self.getItemsResearched(value);
                     $("span.text-researched").html(value);
-                    $("p.info-filter").show();
+
+                    if (value.length <= 0)
+                        $("p.info-filter").hide();
                 }).keydown();
+
             $(".remove-filter-input").click(function(){
                 $("input#search-items-input").val("");
                 $("p.info-filter").hide();
