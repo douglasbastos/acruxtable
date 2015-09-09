@@ -81,7 +81,7 @@ Definimos em qual endereço será buscado o json.
 Definimos por qual elemento do json queremos ordenar.
 No nosso caso pode ser `[date|name|subject]`.
 
-## selectClass
+## selector
 * Obrigatório
 
 Adicionamos essa classe onde a tabela será carregada.
