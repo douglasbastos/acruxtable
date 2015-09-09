@@ -1,12 +1,12 @@
 
-function MakeTable(config) {
+function AcruxTable(config) {
     return this.init(config);
 }
 
 ;(function($){
     'use strict';
 
-    MakeTable.prototype = {
+    AcruxTable.prototype = {
 
         init: function(config) {
             this.sortBy = config.sortBy;
