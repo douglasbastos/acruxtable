@@ -9,6 +9,7 @@ function AcruxTable(config) {
     AcruxTable.prototype = {
 
         init: function(config) {
+            this.url = config.url;
             this.sortBy = config.sortBy;
             this.selector = config.selector;
             this.paginate = config.paginate || 10;
@@ -23,7 +24,7 @@ function AcruxTable(config) {
             var self = this;
             $.ajax({
                 type: 'GET',
-                url: 'emails.json',
+                url: self.url,
                 dataType: 'json',
                 success: function (data) {
                     self.getItems(data);

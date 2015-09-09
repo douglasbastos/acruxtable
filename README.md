@@ -70,6 +70,11 @@ Para customização da listagem de emails é necessário instânciar e configura
             });
         });
 
+## url
+* Obrigatório
+
+Definimos em qual endereço será buscado o json.
+
 ## sortBy
 * Obrigatório
 
