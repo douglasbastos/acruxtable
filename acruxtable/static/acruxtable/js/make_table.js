@@ -113,8 +113,13 @@ function MakeTable(config) {
             $("input#searchItems").keyup(function() {
                 var value = $(this).val();
                     self.getItemsResearched(value);
-                    $("p").html("Filtrando por: "+ value +" - <span class='removeFilterResearched'>Remover Filtro</span>");
+                    $("span.itemSearch").html(value);
+                    $("p.filterText").show();
                 }).keydown();
+            $(".removeFilterResearched").click(function(){
+                $("input#searchItems").val("");
+                $("p.filterText").hide();
+            })
         },
 
         getItemsResearched: function(search){
