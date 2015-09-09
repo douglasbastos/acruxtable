@@ -10,7 +10,7 @@ function AcruxTable(config) {
 
         init: function(config) {
             this.sortBy = config.sortBy;
-            this.selectClass = config.selectClass;
+            this.selector = config.selector;
             this.paginate = config.paginate || 10;
             this.sortOrder = config.sortOrder || 'asc';
             this.page = config.page || 1;
@@ -91,8 +91,8 @@ function AcruxTable(config) {
                 ].join('');
             });
 
-            $(this.selectClass+" *").remove();
-            $(this.selectClass).html(table);
+            $(this.selector+" *").remove();
+            $(this.selector).html(table);
             self.createInfoTotalItems();
         },
 
