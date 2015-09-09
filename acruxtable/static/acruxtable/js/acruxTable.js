@@ -9,7 +9,6 @@ function MakeTable(config) {
     MakeTable.prototype = {
 
         init: function(config) {
-
             this.sortBy = config.sortBy;
             this.selectClass = config.selectClass;
             this.paginate = config.paginate || 10;
@@ -53,8 +52,9 @@ function MakeTable(config) {
         },
 
         getItems: function(items){
-            // Nunca altere this.itemsFixex TODO: Pesquisar como deixar array imutável.
-            this.itemsFixed = this.items = items;
+            // Nunca altere this.itemsConst
+            this.itemsConst = items;
+            this.items = items;
             this.orderItems(this.sortBy, this.sortOrder);
             this.createPagination();
             this.eventsJquery();
@@ -126,10 +126,10 @@ function MakeTable(config) {
             var self = this
 
             var allItems = []
-            $.each(this.itemsFixed, function(i, item){
-                var existName = self.itemsFixed[i].name.trim().toLowerCase().match(search.toLowerCase());
+            $.each(this.itemsConst, function(i, item){
+                var existName = self.itemsConst[i].name.trim().toLowerCase().match(search.toLowerCase());
                 // console.log(existName)
-                var existSubject = self.itemsFixed[i].subject.trim().toLowerCase().match(search.toLowerCase());
+                var existSubject = self.itemsConst[i].subject.trim().toLowerCase().match(search.toLowerCase());
                 // console.log(existSubject)
                 // console.log("================");
                 if (existName || existSubject)
@@ -150,7 +150,6 @@ function MakeTable(config) {
         },
 
         showItemsFiltered: function(items){
-            this.itemsAux = this.items;
             this.items = items;
             this.createTable();
             this.createPagination();
@@ -158,7 +157,7 @@ function MakeTable(config) {
         },
 
         removeFilter: function(){
-            this.items = this.itemsAux;
+            this.items = this.itemsConst;
             this.createTable();
             this.createPagination();
             this.page = 1;
