@@ -42,7 +42,8 @@
 
 # Conhecendo o projeto
 
-No ambiente de desenvolvimento local, acesse o link abaixo e cadastre informações para alimentar json
+Os links abaixo estão com rota localhost:8000
+Em seu ambiente local, acesse o link abaixo e cadastre informações para alimentar json
 
 [Cadastre emails](http://localhost:8000/admin/acruxtable/email/)
 
@@ -55,12 +56,12 @@ Depois do servidor inicializado, já se tem acesso ao json acessando o link abai
 [Json com emails](http://localhost:8000/emails.json)
 
 
-# Configurando make_table.js
+# Configurando acruxTable.js
 
 Para customização da listagem de emails é necessário instânciar e configurar os itens abaixo.
 
         $(document).ready(function() {
-            new MakeTable({
+            new AcruxTable({
                 'sortBy': 'date',
                 'selectClass': ".items_json",
                 'paginate': 10,
@@ -113,6 +114,8 @@ Se tudo foi instalado e configurado corretamente. Acessando o link abaixo no amb
 
 [Resultado](http://localhost:8000/tabela-emails.html)
 --------------------
+
+![Exemplo!](http://oi59.tinypic.com/szzxg0.jpg)
 
 
 #### Bibliotecas usadas no desenvolvimento
