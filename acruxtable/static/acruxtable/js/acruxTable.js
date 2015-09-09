@@ -99,7 +99,7 @@ function MakeTable(config) {
         eventsJquery: function(){
             var self = this;
 
-            $(".filter").click(function(){
+            $(".filter-today").click(function(){
                 var allItems = [];
                 $.each(self.items, function(i, item){
                     if (self.isToday(item.date))
@@ -119,6 +119,7 @@ function MakeTable(config) {
             $(".remove-filter-input").click(function(){
                 $("input#search-items-input").val("");
                 $("p.info-filter").hide();
+                self.removeFilter();
             })
         },
 
@@ -145,7 +146,7 @@ function MakeTable(config) {
 
         showTodayItems: function(itemsToday){
             this.showItemsFiltered(itemsToday);
-            $(".filter").hide();
+            $(".filter-today").hide();
             $(".remove-filter-today").show();
         },
 
@@ -162,7 +163,7 @@ function MakeTable(config) {
             this.createPagination();
             this.page = 1;
             $(".remove-filter-today").hide();
-            $(".filter").show();
+            $(".filter-today").show();
         },
 
         formatDate: function(date){
