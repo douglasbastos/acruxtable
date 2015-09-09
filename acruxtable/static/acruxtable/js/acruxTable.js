@@ -112,22 +112,20 @@ function MakeTable(config) {
                 self.removeFilter();
             });
 
+            $(".remove-filter-input").click(function(){
+                self.removeFilter();
+            });
+
             $("input#search-items-input").keyup(function() {
                 var value = $(this).val();
-                    $("p.info-filter").show();
+                $("p.info-filter").show();
 
-                    self.getItemsResearched(value);
-                    $("span.text-researched").html(value);
+                self.getItemsResearched(value);
+                $("span.text-researched").html(value);
 
-                    if (value.length <= 0)
-                        $("p.info-filter").hide();
-                }).keydown();
-
-            $(".remove-filter-input").click(function(){
-                $("input#search-items-input").val("");
-                $("p.info-filter").hide();
-                self.removeFilter();
-            })
+                if (value.length <= 0)
+                    $("p.info-filter").hide();
+            }).keydown();
         },
 
         getItemsResearched: function(search){
@@ -169,7 +167,11 @@ function MakeTable(config) {
             this.createTable();
             this.createPagination();
             this.page = 1;
+
+            $("p.info-filter").hide();
             $(".remove-filter-today").hide();
+
+            $("input#search-items-input").val("");
             $(".filter-today").show();
         },
 
