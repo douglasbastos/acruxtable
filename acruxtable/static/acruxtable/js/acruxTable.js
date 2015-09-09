@@ -107,18 +107,18 @@ function MakeTable(config) {
                 });
                 self.showTodayItems(allItems);
             });
-            $(".removeFilter").click(function(){
+            $(".remove-filter-today").click(function(){
                 self.removeFilter();
             });
-            $("input#searchItems").keyup(function() {
+            $("input#search-items-input").keyup(function() {
                 var value = $(this).val();
                     self.getItemsResearched(value);
-                    $("span.itemSearch").html(value);
-                    $("p.filterText").show();
+                    $("span.text-researched").html(value);
+                    $("p.info-filter").show();
                 }).keydown();
-            $(".removeFilterResearched").click(function(){
-                $("input#searchItems").val("");
-                $("p.filterText").hide();
+            $(".remove-filter-input").click(function(){
+                $("input#search-items-input").val("");
+                $("p.info-filter").hide();
             })
         },
 
@@ -146,7 +146,7 @@ function MakeTable(config) {
         showTodayItems: function(itemsToday){
             this.showItemsFiltered(itemsToday);
             $(".filter").hide();
-            $(".removeFilter").show();
+            $(".remove-filter-today").show();
         },
 
         showItemsFiltered: function(items){
@@ -161,7 +161,7 @@ function MakeTable(config) {
             this.createTable();
             this.createPagination();
             this.page = 1;
-            $(".removeFilter").hide();
+            $(".remove-filter-today").hide();
             $(".filter").show();
         },
 
