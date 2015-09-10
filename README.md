@@ -63,6 +63,7 @@ Para customização da listagem de emails é necessário instânciar e configura
 
         $(document).ready(function() {
             new AcruxTable({
+                'url': 'emails.json',
                 'sortBy': 'date',
                 'selectClass': ".items_json",
                 'paginate': 10,
