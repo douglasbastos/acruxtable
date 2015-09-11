@@ -87,3 +87,4 @@ local_settings.py
 
 .env
 */.DS_Store
+*/db.sqlite3
