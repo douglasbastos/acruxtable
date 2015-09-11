@@ -9,68 +9,62 @@
 
 #### 1. Instalação via github
 
-    pip install https://github.com/douglasbastos/acruxtable/archive/master.zip
-
+```
+pip install https://github.com/douglasbastos/acruxtable/archive/master.zip
+```
 #### 2. Inclua app no INSTALLED_APPS
-
-    INSTALLED_APPS = (
-        ...
-        'acruxtable',
-    )
-
+```
+INSTALLED_APPS = (
+    ...
+    'acruxtable',
+)
+```
 #### 3. Adicione uma rota para app
 
-    urlpatterns = [
-        ...
-        url(r'^', include('acruxtable.urls')),
-    ]
-
+```
+urlpatterns = [
+    ...
+    url(r'^', include('acruxtable.urls')),
+]
+```
 #### 4. Rode as migrations
-
-    python manage.py migrate acruxtable
-
+```
+python manage.py migrate acruxtable
+```
 #### 5. Crie superusuário caso tenha necessidade
-
-    python manage.py createsuperuser
-
-# Instalação Desenvolvedor
-
-    git clone git@github.com:douglasbastos/acruxtable.git
-    pip install -e .
-
-##### Execute os passos 2, 3 e 4 descritos acima
-
+```
+python manage.py createsuperuser
+```
+# Desenvolvimento
+```
+git clone git@github.com:douglasbastos/acruxtable.git
+```
+```
+make setup
+```
+```
+make run
+```
 # Conhecendo o projeto
 
-Rode o servidor na porta 8000
-
-
-Em seu ambiente local, acesse o link abaixo e cadastre informações para alimentar o json
-
-[Cadastre emails](http://localhost:8000/admin/acruxtable/email/)
-
-Existe um dump com o nome db.sql, para não ter a necessidade de cadastrar diversos itens na mão.
-
-[Dump](https://github.com/douglasbastos/acruxtable/blob/master/db.sql)
-
-Acessando o link abaixo no seu ambiente local, você encontrará o json que alimentará a tabela.
+[Cadastro de emails](http://localhost:8000/admin/acruxtable/email/)
 
 [Json com emails](http://localhost:8000/emails.json)
 
 # Configurando acruxTable.js
 
 Para customização da listagem de emails é necessário instânciar e configurar os itens abaixo.
-
-        $(document).ready(function() {
-            new AcruxTable({
-                'url': 'emails.json',
-                'sortBy': 'date',
-                'selectClass': ".items_json",
-                'paginate': 10,
-                'sortOrder': 'asc',
-            });
+```
+    $(document).ready(function() {
+        new AcruxTable({
+            'url': 'emails.json',
+            'sortBy': 'date',
+            'selectClass': ".items_json",
+            'paginate': 10,
+            'sortOrder': 'asc',
         });
-
+    });
+```
 ## url
 * Obrigatório
 
@@ -86,20 +80,19 @@ No nosso caso pode ser `[date|name|subject]`.
 * Obrigatório
 
 Adicionamos essa classe onde a tabela será carregada.
-
-    Exemplo:
-    <table>
-        <thead>
-            <tr>
-                <th class="name">Nome</th>
-                <th class="subject">Assunto</th>
-                <th class="date">Data</th>
-            </tr>
-        </thead>
-        <tbody class="items_json">
-        </tbody>
-    </table>
-
+```
+<table>
+    <thead>
+        <tr>
+            <th class="name">Nome</th>
+            <th class="subject">Assunto</th>
+            <th class="date">Data</th>
+        </tr>
+    </thead>
+    <tbody class="items_json">
+    </tbody>
+</table>
+```
 ## paginate
 * Opcional
 
@@ -129,3 +122,5 @@ Se tudo foi instalado e configurado corretamente. Acessando o link abaixo no seu
 * [Jquery](https://jquery.com/)
 * [Underscore.js](http://underscorejs.org/)
 * [simplePagination](http://flaviusmatis.github.io/simplePagination.js/)
+
+
