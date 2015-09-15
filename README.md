@@ -10,7 +10,7 @@
 #### 1. Instalação via github
 
 ```
-pip install https://github.com/douglasbastos/acruxtable/archive/master.zip
+$ pip install https://github.com/douglasbastos/acruxtable/archive/master.zip
 ```
 #### 2. Inclua app no INSTALLED_APPS
 ```
@@ -29,21 +29,21 @@ urlpatterns = [
 ```
 #### 4. Rode as migrations
 ```
-python manage.py migrate acruxtable
+$ python manage.py migrate acruxtable
 ```
 #### 5. Crie superusuário caso tenha necessidade
 ```
-python manage.py createsuperuser
+$ python manage.py createsuperuser
 ```
 # Desenvolvimento
 ```
-git clone git@github.com:douglasbastos/acruxtable.git
+$ git clone git@github.com:douglasbastos/acruxtable.git
 ```
 ```
-make setup
+$ make setup
 ```
 ```
-make run
+$ make run
 ```
 # Conhecendo o projeto
 
